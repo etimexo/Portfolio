@@ -1,15 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ExternalLink, Github, FileText } from 'lucide-react';
-import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import type { Project } from '../types';
 
 export default function Projects() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<string>('all');
 
-  // Sample projects to display when Supabase is not configured
-  const sampleProjects: Project[] = [
+  const projects: Project[] = [
     {
       id: '1',
       title: 'Bank Customer Churn Analysis & Prediction',
@@ -80,36 +76,6 @@ export default function Projects() {
     },
   ];
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      // If Supabase is not configured, use sample projects
-      if (!isSupabaseConfigured) {
-        setProjects(sampleProjects);
-        setLoading(false);
-        return;
-      }
-
-      try {
-        const { data, error } = await supabase
-          .from('projects')
-          .select('*')
-          .order('order_index', { ascending: true });
-
-        if (error) throw error;
-        setProjects(data || []);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-        // Fallback to sample projects on error
-        setProjects(sampleProjects);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const categories = [
     { id: 'all', label: 'All Projects' },
     { id: 'data_science', label: 'Data Science' },
@@ -133,18 +99,6 @@ export default function Projects() {
         return 'bg-slate-500/20 text-slate-700 border-slate-500/30';
     }
   };
-
-  if (loading) {
-    return (
-      <section id="projects" className="py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="projects" className="py-24 bg-white">

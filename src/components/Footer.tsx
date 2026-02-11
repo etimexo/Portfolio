@@ -42,7 +42,7 @@ export default function Footer() {
           </div>
 
           <div className="mt-12 pt-8 border-t border-slate-800 text-center text-slate-400">
-            <p>Built with React, TypeScript, and Supabase</p>
+            <p>Built with React, TypeScript, and Tailwind CSS</p>
           </div>
         </div>
       </div>
