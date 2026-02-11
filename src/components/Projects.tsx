@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { ExternalLink, Github, FileText } from 'lucide-react';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import type { Project } from '../types';
 
 export default function Projects() {
@@ -8,25 +8,107 @@ export default function Projects() {
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<string>('all');
 
+  // Sample projects to display when Supabase is not configured
+  const sampleProjects: Project[] = [
+    {
+      id: '1',
+      title: 'Bank Customer Churn Analysis & Prediction',
+      description: 'Comprehensive analysis and machine learning model to predict customer churn in banking, helping identify at-risk customers and improve retention strategies.',
+      category: 'data_science',
+      technologies: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Seaborn'],
+      github_url: 'https://github.com/etimexo/Bank_customer_churn_predict/tree/main',
+      report_url: 'https://medium.com/@elijahobisesan01/predicting-bank-customer-churn-a-comprehensive-guide-52b2627405a4 ',
+      order_index: 1,
+      created_at: new Date().toISOString(),
+      image_url: 'images/bank_churn_image.png',
+    },
+    {
+      id: '2',
+      title: 'American Housing Analysis and Prediction',
+      description: 'In-depth exploratory data analysis of the American housing market, uncovering trends, price factors, and regional variations in real estate.',
+      category: 'data_science',
+      technologies: ['Python', 'Pandas', 'Scikit-learn', 'NumPy', 'Jupyter'],
+      github_url: 'https://github.com/etimexo/American_housing',
+      report_url: 'https://github.com/etimexo/American_housing',
+      order_index: 2,
+      created_at: new Date().toISOString(),
+      image_url: 'images/housing.png',
+    },
+    {
+      id: '3',
+      title: 'Hotel Booking Analysis & Predictive Modeling',
+      description: 'Analysis of hotel booking data with predictive models for cancellation rates, seasonal demand patterns, and revenue optimization insights.',
+      category: 'data_science',
+      technologies: ['Python', 'Pandas', 'Scikit-learn', 'XGBoost', 'Seaborn'],
+      github_url: 'https://github.com/etimexo/Hotel_booking_analysis',
+      report_url: 'https://github.com/etimexo/Hotel_booking_analysis',
+      order_index: 3,
+      created_at: new Date().toISOString(),
+      image_url: 'images/hotel.png',
+    },
+    {
+      id: '4',
+      title: 'O-list E-commerce SQL Analysis',
+      description: 'Comprehensive SQL-based analysis of Brazilian e-commerce data, extracting business insights on sales performance, customer behavior, and logistics.',
+      category: 'data_science',
+      technologies: ['SQL', 'PostgreSQL', 'Data Analysis', 'Business Intelligence'],
+      github_url: 'https://github.com/etimexo/O-list_analysis_SQL',
+      report_url: 'https://github.com/etimexo/O-list_analysis_SQL',
+      order_index: 4,
+      created_at: new Date().toISOString(),
+      image_url: 'images/commerce.png',
+    },
+    {
+      id: '5',
+      title: 'AI Customer Support Agent',
+      description: 'Intelligent conversational agent powered by LLMs for handling customer inquiries with context awareness.',
+      category: 'ai_agents',
+      technologies: ['Python', 'LangChain', 'OpenAI', 'FastAPI'],
+      github_url: '#',
+      order_index: 5,
+      created_at: new Date().toISOString(),
+    },
+    {
+      id: '6',
+      title: 'Document Processing Pipeline',
+      description: 'Automated workflow for extracting, processing, and routing documents using OCR and NLP techniques.',
+      category: 'workflow_automation',
+      technologies: ['Python', 'Tesseract', 'spaCy', 'Airflow'],
+      github_url: '#',
+      order_index: 6,
+      created_at: new Date().toISOString(),
+    },
+  ];
+
   useEffect(() => {
+    const fetchProjects = async () => {
+      // If Supabase is not configured, use sample projects
+      if (!isSupabaseConfigured) {
+        setProjects(sampleProjects);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase
+          .from('projects')
+          .select('*')
+          .order('order_index', { ascending: true });
+
+        if (error) throw error;
+        setProjects(data || []);
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+        // Fallback to sample projects on error
+        setProjects(sampleProjects);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchProjects();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const fetchProjects = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('projects')
-        .select('*')
-        .order('order_index', { ascending: true });
-
-      if (error) throw error;
-      setProjects(data || []);
-    } catch (error) {
-      console.error('Error fetching projects:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const categories = [
     { id: 'all', label: 'All Projects' },
@@ -104,15 +186,26 @@ export default function Projects() {
                   key={project.id}
                   className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
                 >
-                  {project.image_url && (
-                    <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden">
+                  <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden">
+                    {project.image_url ? (
                       <img
                         src={project.image_url}
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       />
-                    </div>
-                  )}
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-50 via-slate-100 to-emerald-50">
+                        <div className="text-center">
+                          <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 flex items-center justify-center">
+                            <span className="text-white text-2xl font-bold">
+                              {project.title.charAt(0)}
+                            </span>
+                          </div>
+                          <span className="text-xs text-slate-400">Image coming soon</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
 
                   <div className="p-6">
                     <div className="flex items-start justify-between mb-3">
@@ -126,8 +219,20 @@ export default function Projects() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-slate-600 hover:text-slate-900 transition-colors"
+                            title="View Code"
                           >
                             <Github className="w-5 h-5" />
+                          </a>
+                        )}
+                        {project.report_url && (
+                          <a
+                            href={project.report_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-slate-600 hover:text-blue-600 transition-colors"
+                            title="View Report"
+                          >
+                            <FileText className="w-5 h-5" />
                           </a>
                         )}
                         {project.project_url && (
@@ -135,7 +240,8 @@ export default function Projects() {
                             href={project.project_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-slate-600 hover:text-blue-600 transition-colors"
+                            className="text-slate-600 hover:text-emerald-600 transition-colors"
+                            title="View Project"
                           >
                             <ExternalLink className="w-5 h-5" />
                           </a>
