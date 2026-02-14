@@ -2,6 +2,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
+  long_description?: string;
   category: 'data_science' | 'ai_agents' | 'workflow_automation';
   technologies: string[];
   image_url?: string;
