@@ -9,6 +9,7 @@ export interface Project {
   project_url?: string;
   github_url?: string;
   report_url?: string;
+  linkedin_url?: string;
   order_index: number;
   created_at: string;
 }

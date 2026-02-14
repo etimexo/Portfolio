@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, Github, FileText, ChevronDown, ChevronUp } from 'lucide-react';
+import { ExternalLink, Github, FileText, Linkedin, ChevronDown, ChevronUp } from 'lucide-react';
 import type { Project } from '../types';
 
 export default function Projects() {
@@ -11,7 +11,7 @@ export default function Projects() {
       id: '1',
       title: 'Bank Customer Churn Analysis & Prediction',
       description: 'Comprehensive analysis and machine learning model to predict customer churn in banking, helping identify at-risk customers and improve retention strategies.',
-      long_description: 'This project dives deep into customer churn in the banking sector using a real-world dataset. It begins with thorough exploratory data analysis to uncover patterns in demographics, account activity, and product usage. Feature engineering and preprocessing are applied before training multiple classification models including Logistic Regression, Random Forest, and Gradient Boosting. The best-performing model is selected based on precision, recall, and F1-score — with a focus on identifying at-risk customers so that retention teams can intervene proactively.',
+      long_description: 'This project dives deep into customer churn in the banking sector using a real-world dataset. It begins with thorough exploratory data analysis to uncover patterns in demographics, account activity, and product usage. Feature engineering and preprocessing are applied before training multiple classification models including Logistic Regression, Random Forest, and Gradient Boosting. The best-performing model is selected based on precision, recall, and F1-score. With a focus on identifying at-risk customers so that retention teams can intervene proactively.',
       category: 'data_science',
       technologies: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Seaborn'],
       github_url: 'https://github.com/etimexo/Bank_customer_churn_predict/tree/main',
@@ -62,68 +62,74 @@ export default function Projects() {
     {
       id: '5',
       title: 'Voice AI Agent',
-      description: 'An intelligent voice AI agent reachable via a real phone number. It picks up calls, answers company enquiries, checks calendar availability in real time, and books appointments — all through natural conversation.',
-      long_description: 'This voice AI agent is assigned a real phone number that anyone can dial. When a call comes in, the agent picks up and engages the caller in a natural, human-like conversation powered by advanced LLMs. It is trained on the company\'s knowledge base to accurately answer enquiries about services, pricing, and policies. The agent also integrates with Google Calendar in real time — it can check available slots, suggest times, and book appointments on the spot. Built with Vapi for voice capabilities and Make.com for workflow orchestration, it provides 24/7 phone support without human intervention.',
+      description: 'An intelligent voice AI agent reachable via a real phone number. It picks up calls, answers company enquiries, checks calendar availability in real time, and books appointments. All through natural conversation.',
+      long_description: 'This voice AI agent is assigned a real phone number that anyone can dial. When a call comes in, the agent picks up and engages the caller in a natural, human-like conversation powered by advanced LLMs. It is trained on the company\'s knowledge base to accurately answer enquiries about services, pricing, and policies. The agent also integrates with Google Calendar in real time to check available slots, suggest times, and book appointments on the spot. Built with Vapi for voice capabilities and Make.com for workflow orchestration, it provides 24/7 phone support without human intervention.',
       category: 'ai_agents',
       technologies: ['Python', 'Vapi', 'OpenAI', 'Make.com', 'Google Calendar API'],
-      github_url: '#',
+      linkedin_url: 'https://www.linkedin.com/posts/teoso_ai-automation-voiceai-activity-7421416611313537024-BjYS?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADKbyxEBOE69PEzcfLYija6OCnIZ6tkzqyM',
       order_index: 5,
       created_at: new Date().toISOString(),
+      image_url: import.meta.env.BASE_URL + 'images/voice.png',
     },
     {
       id: '7',
       title: 'Multi-Platform AI Customer Support Agent',
-      description: 'A versatile AI customer support agent that operates across WhatsApp, Messenger, Telegram, and website live chat. It handles enquiries, answers FAQs, and books calendar meetings — providing seamless support on every channel.',
-      long_description: 'This multi-channel AI agent provides consistent, intelligent customer support across WhatsApp, Facebook Messenger, Telegram, and website live chat widgets. Regardless of the platform, customers get the same quality of interaction — the agent understands context, answers product and service questions, resolves common issues, and can schedule calendar meetings when a deeper conversation with a human is needed. Built with a unified backend, it ensures all conversations are logged and synced, giving businesses a single view of customer interactions across every touchpoint.',
+      description: 'A versatile AI customer support agent that operates across WhatsApp, Messenger, Telegram, and website live chat. It handles enquiries, answers FAQs, and books calendar meetings, providing seamless support on every channel.',
+      long_description: 'This multi-channel AI agent provides consistent, intelligent customer support across WhatsApp, Facebook Messenger, Telegram, and website live chat widgets. Regardless of the platform, customers get the same quality of interaction. The agent understands context, answers product and service questions, resolves common issues, and can schedule calendar meetings when a deeper conversation with a human is needed. Built with a unified backend, it ensures all conversations are logged and synced, giving businesses a single view of customer interactions across every touchpoint.',
       category: 'ai_agents',
       technologies: ['Python', 'OpenAI', 'Make.com', 'WhatsApp API', 'Telegram API', 'Google Calendar API'],
-      github_url: '#',
+      linkedin_url: 'https://www.linkedin.com/posts/teoso_ai-artificialintelligence-businessgrowth-activity-7370863500144926720-KCLA?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADKbyxEBOE69PEzcfLYija6OCnIZ6tkzqyM',
       order_index: 7,
       created_at: new Date().toISOString(),
+      image_url: import.meta.env.BASE_URL + 'images/multi.png',
     },
     {
       id: '6',
       title: 'Email Classifier & Priority Notifier',
       description: 'An intelligent automation that monitors incoming emails, classifies them by urgency using AI, and instantly sends a Slack notification for high-priority messages — including a summary, the sender, and a recommended response time.',
-      long_description: 'This automation continuously watches your inbox for new emails. When one arrives, it uses AI to analyze the content and classify it by urgency — from low to critical. For high-priority emails that demand a quick response, it immediately fires a Slack notification that includes a concise summary of the email, who sent it, and a recommendation on how fast it should be addressed. This ensures that important messages never get buried in a crowded inbox, and teams can respond to time-sensitive communications without constantly checking their email.',
+      long_description: 'This automation continuously watches your inbox for new emails. When one arrives, it uses AI to analyze the content and classify it by urgency (from low to critical). For high-priority emails that demand a quick response, it immediately fires a Slack notification that includes a concise summary of the email, who sent it, and a recommendation on how fast it should be addressed. This ensures that important messages never get buried in a crowded inbox, and teams can respond to time-sensitive communications without constantly checking their email.',
       category: 'workflow_automation',
       technologies: ['Make.com', 'OpenAI', 'Gmail API', 'Slack API'],
-      github_url: '#',
+      linkedin_url: 'https://www.linkedin.com/posts/teoso_ai-automation-openrouter-ugcPost-7427266068835987456-Nwzy?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADKbyxEBOE69PEzcfLYija6OCnIZ6tkzqyM',
       order_index: 6,
       created_at: new Date().toISOString(),
+      image_url: import.meta.env.BASE_URL + 'images/classifier.png',
     },
     {
       id: '8',
       title: 'Google Sheets Auto-Emailer',
-      description: 'An automation that watches a Google Sheet for new rows and automatically sends a personalized email to each new entry — perfect for onboarding new sign-ups, customers, or leads.',
-      long_description: 'This workflow automation monitors a Google Sheet in real time for new row entries. As soon as a new row is added — for example, when a customer signs up for a product, fills out a form, or is manually added — the automation triggers and sends a personalized email to the address found in that row. The email content can be customized with dynamic fields pulled from the sheet (name, product, etc.). This is ideal for welcome emails, sign-up confirmations, onboarding sequences, or any scenario where new entries need an immediate email follow-up without manual effort.',
+      description: 'A webhook watches a Google Sheet for new rows and automatically sends a personalized email to each new entry. Perfect for onboarding new sign-ups, customers, or leads.',
+      long_description: 'This workflow automation monitors a Google Sheet in real time for new row entries. As soon as a new row is added, for example, when a customer signs up for a product, fills out a form, or is manually added, the automation triggers and sends a personalized email to the address found in that row. The email content can be customized with dynamic fields pulled from the sheet (name, product, etc.). This is ideal for welcome emails, sign-up confirmations, onboarding sequences, or any scenario where new entries need an immediate email follow-up without manual effort.',
       category: 'workflow_automation',
       technologies: ['Make.com', 'Google Sheets API', 'Gmail API'],
-      github_url: '#',
+      linkedin_url: '#',
       order_index: 8,
       created_at: new Date().toISOString(),
+      image_url: import.meta.env.BASE_URL + 'images/sheets.png',
     },
     {
       id: '9',
       title: 'AI Customer Support & Lead Generation Agent',
       description: 'An AI-powered agent that handles customer support conversations, captures lead information, logs it to Airtable, and automatically sends a follow-up email outlining next steps.',
-      long_description: 'This agent serves a dual purpose: customer support and lead generation. It converses naturally with website visitors or clients, answering their questions and resolving issues in real time. When a potential lead is identified, the agent collects key customer information — name, email, company, and specific needs — through the conversation. This data is automatically logged into an Airtable sheet for the sales team to review. Immediately after logging, the system triggers an automated email to the new lead with personalized next steps, ensuring no opportunity falls through the cracks. The result is a seamless pipeline from first contact to qualified lead.',
+      long_description: 'This agent serves a dual purpose: customer support and lead generation. It converses naturally with website visitors or clients, answering their questions and resolving issues in real time. When a potential lead is identified, the agent collects key customer information(name, email, company, and specific needs) through the conversation. This data is automatically logged into an Airtable sheet for the sales team to review. Immediately after logging, the system triggers an automated email to the new lead with personalized next steps, ensuring no opportunity falls through the cracks. The result is a seamless pipeline from first contact to qualified lead.',
       category: 'ai_agents',
       technologies: ['Python', 'OpenAI', 'Make.com', 'Airtable API', 'Gmail API'],
-      github_url: '#',
+      linkedin_url: 'https://www.linkedin.com/posts/teoso_realestate-chatbots-aiassistant-activity-7351949234897666048-zs_S?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADKbyxEBOE69PEzcfLYija6OCnIZ6tkzqyM',
       order_index: 9,
       created_at: new Date().toISOString(),
+      image_url: import.meta.env.BASE_URL + 'images/cus_lead.png',
     },
     {
       id: '10',
       title: 'AI Lead Gen & Auto-Email Workflow',
-      description: 'An automated workflow combining AI-driven lead capture with Airtable logging and instant follow-up emails — turning conversations into qualified leads on autopilot.',
+      description: 'An automated workflow combining AI-driven lead capture with Airtable logging and instant follow-up emails. Turning conversations into qualified leads on autopilot.',
       long_description: 'This automation workflow is the backend engine behind the AI Customer Support & Lead Generation Agent. When the AI agent captures a new lead during a conversation, this workflow takes over: it formats and logs all captured customer data into an organized Airtable base, categorizes the lead by interest or urgency, and immediately dispatches a personalized follow-up email to the prospect outlining next steps, relevant resources, or a meeting booking link. The entire pipeline runs without manual intervention, ensuring rapid response times and consistent lead nurturing.',
       category: 'workflow_automation',
-      technologies: ['Make.com', 'Airtable API', 'Gmail API', 'OpenAI'],
-      github_url: '#',
+      technologies: ['Make.com', 'Airtable API', 'Gmail API', 'OpenRouter API'],
+      linkedin_url: 'https://www.linkedin.com/posts/teoso_realestate-chatbots-aiassistant-activity-7351949234897666048-zs_S?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADKbyxEBOE69PEzcfLYija6OCnIZ6tkzqyM',
       order_index: 10,
       created_at: new Date().toISOString(),
+      image_url: import.meta.env.BASE_URL + 'images/last.png',
     },
   ];
 
@@ -238,6 +244,17 @@ export default function Projects() {
                             title="View Report"
                           >
                             <FileText className="w-5 h-5" />
+                          </a>
+                        )}
+                        {project.linkedin_url && (
+                          <a
+                            href={project.linkedin_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-slate-600 hover:text-[#0A66C2] transition-colors"
+                            title="View LinkedIn Post"
+                          >
+                            <Linkedin className="w-5 h-5" />
                           </a>
                         )}
                         {project.project_url && (
